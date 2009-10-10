@@ -3,6 +3,17 @@
   <includeClasses>
     <classEntry path="org.lionart.arabic.spark.components.ArabicLabel"/>
     <classEntry path="org.lionart.arabic.spark.components.ArabicCheckBox"/>
+    <classEntry path="org.lionart.arabic.Calendar.HijriCalendar"/>
+    <classEntry path="org.lionart.time.Calendar"/>
+    <classEntry path="org.lionart.FlexObject"/>
+    <classEntry path="org.lionart.utils.AbstractUtil"/>
+    <classEntry path="org.lionart.time.TimeSpan"/>
+    <classEntry path="org.lionart.time.ICalendar"/>
+    <classEntry path="org.lionart.arabic.Calendar.UmAlQuraCalendar"/>
+    <classEntry path="org.lionart.time.CalendarWeekRule"/>
+    <classEntry path="org.lionart.time.DayOfWeek"/>
+    <classEntry path="org.lionart.exceptions.Exception"/>
+    <classEntry path="org.lionart.exceptions.ArgumentOutOfRangeException"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
