@@ -26,7 +26,7 @@ package org.lionart.time
 		/**
 		 * Useful constants.
 		 */
-		private const _defaultTwoDigitMax : int = 2029;
+		private const DEFAULT_TWO_DIGIT_MAX : int = 2029;
 		
 		/*---------------------------------------------*/
 		/* Constructor                                 */
@@ -78,8 +78,8 @@ package org.lionart.time
 			else
 			{
 				// Set the default value.
-				super.twoDigitYearMax = _defaultTwoDigitMax;
-				return _defaultTwoDigitMax;
+				super.twoDigitYearMax = DEFAULT_TWO_DIGIT_MAX;
+				return DEFAULT_TWO_DIGIT_MAX;
 			}
 		}
 		override public function set twoDigitYearMax(value:int) : void

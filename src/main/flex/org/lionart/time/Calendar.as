@@ -39,13 +39,13 @@ package org.lionart.time
 			
 			// Abstract class implementation
 			AbstractUtil.mustBeAbstract(self, this);
-			
+			/*
 			var mustImplementMethods : Array =
 				[eras,twoDigitYearMax,addMonths,addWeeks,addYears,getDayOfMonth,
 				getDayOfWeek,getDayOfYear,getMonth,getYear,getDaysInMonthInEra,
 				getMonthsInYearInEra,getEra,getMonthsInYearInEra,isLeapDayInEra,
 				isLeapMonthInEra,isLeapYearInEra,toDateTimeInEra,toFourDigitYear];
-			AbstractUtil.checkMustImplementMethods(this, Calendar, mustImplementMethods);
+			AbstractUtil.checkMustImplementMethods(this, Calendar, mustImplementMethods);*/
 		}
 
 		/*---------------------------------------------*/
