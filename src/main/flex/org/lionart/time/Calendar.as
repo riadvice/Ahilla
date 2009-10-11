@@ -23,33 +23,28 @@ package org.lionart.time
 		/**
 		 * Current era value.
 		 */
-		public static var CURRENT_ERA : int= 0;
+		public const CURRENT_ERA : int= 0;
 		
 		/**
 		 * Internal state.
 		 */
 		private var _twoDigitYearMax : int;
 		
-		
 		/*---------------------------------------------*/
 		/* Constructor                                 */
 		/*---------------------------------------------*/
 		public function Calendar(self:Calendar)
 		{
-			twoDigitYearMax = -1;
+			_twoDigitYearMax = -1;
 			
 			// Abstract class implementation
 			AbstractUtil.mustBeAbstract(self, this);
-			var mustImplementMethods : Array = 
-				[
-					eras,twoDigitYearMax,addDays,addHours,addMilliseconds,addMinutes,
-					addSeconds,addWeeks,addMonths,addYears,getDayOfWeek,getDayOfMonth,
-					getDayOfYear,getHour,getMilliseconds,getMinute,getMonth,getSecond,
-					getYear,getDaysInYear,getDaysInYearInEra,getDaysInMonth,getDaysInMonth,
-					getDaysInMonthInEra,getEra,getMonthsInYear,getMonthsInYearInEra,getWeekOfYear,
-					isLeapDay,isLeapDayInEra,isLeapMonth,isLeapMonthInEra,isLeapYear,
-					isLeapYearInEra,toDateTime,toDateTimeInEra,toFourDigitYear
-				];
+			
+			var mustImplementMethods : Array =
+				[eras,twoDigitYearMax,addMonths,addWeeks,addYears,getDayOfMonth,
+				getDayOfWeek,getDayOfYear,getMonth,getYear,getDaysInMonthInEra,
+				getMonthsInYearInEra,getEra,getMonthsInYearInEra,isLeapDayInEra,
+				isLeapMonthInEra,isLeapYearInEra,toDateTimeInEra,toFourDigitYear];
 			AbstractUtil.checkMustImplementMethods(this, Calendar, mustImplementMethods);
 		}
 
@@ -67,14 +62,14 @@ package org.lionart.time
 		 */
 		public function get twoDigitYearMax () : int
 		{
-			return twoDigitYearMax;
+			return _twoDigitYearMax;
 		}
 		/**
 		 * Set the last year of a 100-year range for 2-digit processing.
 		 */
 		public function set twoDigitYearMax (value : int) : void
 		{
-			twoDigitYearMax = value;
+			_twoDigitYearMax = value;
 		}
 		
 		/**
@@ -101,7 +96,7 @@ package org.lionart.time
 			}
 			catch(e : OverflowException)
 			{
-				throw new ArgumentException("Arg_DateRange");
+				throw new ArgumentException("","Arg_DateRange");
 			}
 			
 			// Construct and return a new Date object,
@@ -135,7 +130,7 @@ package org.lionart.time
 			}
 			catch(e : OverflowException)
 			{
-				throw new ArgumentException("Arg_DateRange");
+				throw new ArgumentException("","Arg_DateRange");
 			}
 			
 			// Construct and return a new Date object,
@@ -311,7 +306,7 @@ package org.lionart.time
 			if(year < 0)
 			{
 				// Invalid year value.
-				throw new ArgumentException("ArgRange_NonNegative");
+				throw new ArgumentException("","ArgRange_NonNegative");
 			}
 			else if(year >= 100)
 			{
@@ -349,10 +344,10 @@ package org.lionart.time
 		public function getYear(time : Date) : int {return NaN};
 		
 		// Get the number of days in a particular month.
-		public function getDaysInMonthInEra(year : int, month : int,currentEra : int) : int {return NaN};
+		public function getDaysInMonthInEra(year : int, month : int,era : int) : int {return NaN};
 		
 		// Get the number of days in a particular year.
-		public function getDaysInYearInEra(year : int, currentEra : int) : int {return NaN};
+		public function getDaysInYearInEra(year : int, era : int) : int {return NaN};
 		
 		// Get the era for a specific DateTime value.
 		public function getEra(time : Date) : int {return NaN};
@@ -361,17 +356,17 @@ package org.lionart.time
 		public function getMonthsInYearInEra(year : int, era : int) : int {return NaN};
 		
 		// Determine if a particular day is a leap day.
-		public function isLeapDayInEra(year : int, month : int, day : int, currentEra : int) : Boolean {return false};
+		public function isLeapDayInEra(year : int, month : int, day : int, era : int) : Boolean {return false};
 		
 		// Determine if a particular month is a leap month.
-		public function isLeapMonthInEra(year : int, month : int, currentEra : int) : Boolean {return false};
+		public function isLeapMonthInEra(year : int, month : int, era : int) : Boolean {return false};
 		
 		// Determine if a particular year is a leap year.
-		public function isLeapYearInEra(year : int, currentEra : int) : Boolean {return false};
+		public function isLeapYearInEra(year : int, era : int) : Boolean {return false};
 		
 		//
 		public function toDateTimeInEra(year : int, month : int, day : int,
 										hour : int, minute : int, second : int,
-										millisecond : int, currentEra : int) : Date {return null};
+										millisecond : int, era : int) : Date {return null};
 	}
 }

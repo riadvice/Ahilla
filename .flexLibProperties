@@ -14,6 +14,11 @@
     <classEntry path="org.lionart.time.DayOfWeek"/>
     <classEntry path="org.lionart.exceptions.Exception"/>
     <classEntry path="org.lionart.exceptions.ArgumentOutOfRangeException"/>
+    <classEntry path="org.lionart.time.GregorianCalendar"/>
+    <classEntry path="org.lionart.time.GregorianCalendarTypes"/>
+    <classEntry path="org.lionart.utils.dateutils.BusinessDay"/>
+    <classEntry path="org.lionart.utils.dateutils.DateTimeUtils"/>
+    <classEntry path="org.lionart.utils.dateutils.DaylightSavingTimeUS"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
