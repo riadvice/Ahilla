@@ -17,8 +17,7 @@ package org.lionart.arabic.Calendar
 		/**
 		 * The Hijri era.
 		 */
-		public static var _hijriEra : int;
-		public function get hijriEra() : int
+		public static function get hijriEra() : int
 		{
 			return 1;
 		}
@@ -32,7 +31,7 @@ package org.lionart.arabic.Calendar
 			622,6,15 = -42521940000000 
 		    622,6,8  = -42522544800000 Maybe 622,7,8 (7 = July) is correct
 		*/
-		private const MIN_TIME : Number = -42521940000000;
+		private const MIN_TIME : Number = -42522544800000;
 		
 		/**
 		 * Internal state.
@@ -68,6 +67,14 @@ package org.lionart.arabic.Calendar
 					30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29,
 					30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30];
 		}
+		/**
+		 * Variables used in pullDateApart because flex do not work
+		 * with reference with native types. 
+		 */
+		private var _yearRef  : int;
+		private var _monthRef : int;
+		private var _dayRef   : int;
+		private var _ticksBeforeUTC : Number= 62135596800000;
 		
 		/*---------------------------------------------*/
 		/* Constuctor                                  */
@@ -91,6 +98,7 @@ package org.lionart.arabic.Calendar
 			{
 				// Must find a way to do it. Beacuase we can not acces windows regisrty.
 				// Load form config for example
+				adjustemnt = 0;
 			}
 			else
 			{
@@ -126,11 +134,16 @@ package org.lionart.arabic.Calendar
 		/**
 		 * Pull apart a DateTime value into year, month, and day.
 		 */
-		private function pullDateApart(time : Date, year : int, month : int, day : int) : void
+		private function pullDateApart(time : Date) : void
 		{
 			var days : int;
 			var estimate1 : int;
 			var estimate2 : int;
+			
+			//init variables
+			_yearRef = 0;
+			_monthRef = 0;
+			_dayRef = 0;
 			
 			// Validate the time range.
 			if(time.time < MIN_TIME)
@@ -139,41 +152,41 @@ package org.lionart.arabic.Calendar
 			}
 			
 			// Calculate the absolute date, adjusted as necessary.
-			days = (time.time / TimeSpan.MILLISECONDS_PER_DAY) + 1;
+			days = ((time.time + _ticksBeforeUTC) / TimeSpan.MILLISECONDS_PER_DAY) + 1;
 			days += hijriAdjustment;
 			
 			// Calculate the Hijri year value.
-			year = (int)(((days - 227013) * 30) / 10631) + 1;
-			estimate1 = yearToDay(year);
-			estimate2 = getDaysInYearInEra(year, hijriEra);
+			_yearRef = (((days - 227013) * 30) / 10631) + 1;
+			estimate1 = yearToDay(_yearRef);
+			estimate2 = getDaysInYearInEra(_yearRef, hijriEra);
 			if(days < estimate1)
 			{
 				estimate1 -= estimate2;
-				--year;
+				--_yearRef;
 			}
 			else if(days == estimate1)
 			{
-				--year;
-				estimate2 = getDaysInYearInEra(year, hijriEra);
+				--_yearRef;
+				estimate2 = getDaysInYearInEra(_yearRef, hijriEra);
 				estimate1 -= estimate2;
 			}
 			else if(days > (estimate1 + estimate2))
 			{
 				estimate1 += estimate2;
-				++year;
+				++_yearRef;
 			}
 			
 			// Calculate the Hijri month value.
-			month = 1;
+			_monthRef = 1;
 			days -= estimate1;
-			while(month <= 12 && days > daysBeforeMonth[month - 1])
+			while(_monthRef <= 12 && days > daysBeforeMonth[_monthRef - 1])
 			{
-				++month;
+				++_monthRef;
 			}
-			--month;
+			--_monthRef;
 			
 			// Calculate the Hijri date value.
-			day = (int)(days - daysBeforeMonth[month - 1]);
+			_dayRef = (days - daysBeforeMonth[_monthRef - 1]);
 		}
 		
 		private function recombineDate(year : int, month : int, day : int, ticks : int) : Date
@@ -236,37 +249,34 @@ package org.lionart.arabic.Calendar
 		 */
 		override public function addMonths(time:Date, months:int) : Date
 		{
-			var year : int;
-			var month : int;
-			var day : int;
-			pullDateApart(time, year, month, day);
+			pullDateApart(time);
 			if(months > 0)
 			{
-				year += months / 12;
-				month += months % 12;
-				if(month > 12)
+				_yearRef += months / 12;
+				_monthRef += months % 12;
+				if(_monthRef > 12)
 				{
-					++year;
-					month -= 12;
+					++_yearRef;
+					_monthRef -= 12;
 				}
 			}
 			else if(months < 0)
 			{
 				months = -months;
-				year -= months / 12;
-				month -= months % 12;
-				if(month < 1)
+				_yearRef -= months / 12;
+				_monthRef -= months % 12;
+				if(_monthRef < 1)
 				{
-					--year;
-					month += 12;
+					--_yearRef;
+					_monthRef += 12;
 				}
 			}
-			var limit : int = getDaysInMonthInEra(year, month, hijriEra);
-			if(day > limit)
+			var limit : int = getDaysInMonthInEra(_yearRef, _monthRef, hijriEra);
+			if(_dayRef > limit)
 			{
-				day = limit;
+				_dayRef = limit;
 			}
-			return recombineDate(year, month, day,time.time % TimeSpan.MILLISECONDS_PER_DAY);
+			return recombineDate(_yearRef, _monthRef, _dayRef,time.time % TimeSpan.MILLISECONDS_PER_DAY);
 		}
 		override public function addYears(time:Date, years:int) : Date
 		{
@@ -278,11 +288,8 @@ package org.lionart.arabic.Calendar
 		 */
 		override public function getDayOfMonth(time:Date) : int
 		{
-			var year : int;
-			var month : int;
-			var day : int;
-			pullDateApart(time, year, month, day);
-			return day;
+			pullDateApart(time);
+			return _dayRef;
 		}
 		override public function getDayOfWeek(time : Date) : int
 		{
@@ -290,27 +297,18 @@ package org.lionart.arabic.Calendar
 		}
     	override public function getDayOfYear(time : Date) : int
 		{
-			var year : int;
-			var month : int;
-			var day : int;
-			pullDateApart(time, year, month, day);
-			return daysBeforeMonth[month - 1] + day;
+			pullDateApart(time);
+			return daysBeforeMonth[_monthRef - 1] + _dayRef;
 		}
 		override public function getMonth(time : Date) : int
 		{
-			var year : int;
-			var month : int;
-			var day : int;
-			pullDateApart(time, year, month, day);
-			return month;
+			pullDateApart(time);
+			return _monthRef;
 		}
 		override public function getYear(time : Date) : int
 		{
-			var year : int;
-			var month : int;
-			var day : int;
-			pullDateApart(time, year, month, day);
-			return year;
+			pullDateApart(time);
+			return _yearRef;
 		}
 		
 		/**
@@ -342,6 +340,43 @@ package org.lionart.arabic.Calendar
 			{
 				return 29;
 			}
+		}
+		
+		/**
+		 * Get the number of days in a particular year.
+		 */
+		override public function getDaysInYearInEra(year : int, era : int) : int
+		{
+			if(isLeapYearInEra(year, era))
+			{
+				return 355;
+			}
+			else
+			{
+				return 354;
+			}
+		}
+		
+		/**
+		 * Get the era for a specific DateTime value.
+		 */
+		override public function getEra(time:Date) : int
+		{
+			return hijriEra;
+		}
+		
+		// Get the number of months in a specific year.
+		override public function getMonthsInYearInEra(year : int, era : int) : int
+		{
+			if(year < 1 || year > MAX_YEAR)
+			{
+				throw new ArgumentOutOfRangeException("year","ArgRange_Year");
+			}
+			if(era != CURRENT_ERA && era != hijriEra)
+			{
+				throw new ArgumentException("Arg_InvalidEra");
+			}
+			return 12;
 		}
 		
 		/**
