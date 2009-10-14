@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<flexLibProperties includeAllClasses="true" version="3">
+<flexLibProperties includeAllClasses="false" version="3">
   <includeClasses>
-    <classEntry path="org.lionart.arabic.spark.components.ArabicLabel"/>
-    <classEntry path="org.lionart.arabic.spark.components.ArabicCheckBox"/>
-    <classEntry path="org.lionart.arabic.Calendar.HijriCalendar"/>
-    <classEntry path="org.lionart.time.Calendar"/>
     <classEntry path="org.lionart.FlexObject"/>
-    <classEntry path="org.lionart.utils.AbstractUtil"/>
-    <classEntry path="org.lionart.time.TimeSpan"/>
-    <classEntry path="org.lionart.time.ICalendar"/>
+    <classEntry path="org.lionart.arabic.Calendar.HijriCalendar"/>
     <classEntry path="org.lionart.arabic.Calendar.UmAlQuraCalendar"/>
+    <classEntry path="org.lionart.arabic.events.ArabicCalendarLayoutChangeEvent"/>
+    <classEntry path="org.lionart.arabic.spark.controls.ArabicCheckBox"/>
+    <classEntry path="org.lionart.arabic.spark.controls.ArabicLabel"/>
+    <classEntry path="org.lionart.exceptions.ArgumentException"/>
+    <classEntry path="org.lionart.exceptions.ArgumentOutOfRangeException"/>
+    <classEntry path="org.lionart.exceptions.Exception"/>
+    <classEntry path="org.lionart.exceptions.OverflowException"/>
+    <classEntry path="org.lionart.mx.accessibilty.ArabicDateChooserAccImpl"/>
+    <classEntry path="org.lionart.mx.accessibilty.ArabicDateFieldAccImpl"/>
+    <classEntry path="org.lionart.mx.controls.ArabicCalendarLayout"/>
+    <classEntry path="org.lionart.mx.controls.ArabicDateChooser"/>
+    <classEntry path="org.lionart.mx.controls.ArabicDateField"/>
+    <classEntry path="org.lionart.time.Calendar"/>
     <classEntry path="org.lionart.time.CalendarWeekRule"/>
     <classEntry path="org.lionart.time.DayOfWeek"/>
-    <classEntry path="org.lionart.exceptions.Exception"/>
-    <classEntry path="org.lionart.exceptions.ArgumentOutOfRangeException"/>
     <classEntry path="org.lionart.time.GregorianCalendar"/>
     <classEntry path="org.lionart.time.GregorianCalendarTypes"/>
+    <classEntry path="org.lionart.time.ICalendar"/>
+    <classEntry path="org.lionart.time.TimeSpan"/>
+    <classEntry path="org.lionart.utils.AbstractUtil"/>
     <classEntry path="org.lionart.utils.dateutils.BusinessDay"/>
     <classEntry path="org.lionart.utils.dateutils.DateTimeUtils"/>
     <classEntry path="org.lionart.utils.dateutils.DaylightSavingTimeUS"/>
+    <classEntry path="org.lionart.mx.core.ArabicContainer"/>
   </includeClasses>
-  <includeResources/>
+  <includeResources>
+    <resourceEntry destPath="defaults.css" sourcePath="defaults.css"/>
+  </includeResources>
   <namespaceManifests/>
 </flexLibProperties>
