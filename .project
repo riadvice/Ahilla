@@ -15,4 +15,11 @@
 		<nature>com.adobe.flexbuilder.project.flexlibnature</nature>
 		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>flex-config.xml</name>
+			<type>1</type>
+			<locationURI>FLEX_SDK/frameworks/flex-config.xml</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
