@@ -1,10 +1,10 @@
 /**
  * Implementation of "System.Globalization.Calendar" from Southern Storm Software C#
  * source code given in GNU 2 licence.
- * 
+ *
  * It is an bastarct class that will be used to repalce Flex default Date in
  * custom components.
- * 
+ *
  * @author : LionArt
  */
 package org.lionart.time
@@ -16,7 +16,7 @@ package org.lionart.time
 
 	public class Calendar implements ICalendar
 	{
-		
+
 		/*---------------------------------------------*/
 		/* Members                                     */
 		/*---------------------------------------------*/
@@ -24,28 +24,28 @@ package org.lionart.time
 		 * Current era value.
 		 */
 		public const CURRENT_ERA : int= 0;
-		
+
 		/**
 		 * Internal state.
 		 */
 		private var _twoDigitYearMax : int;
-		
+
 		/*---------------------------------------------*/
 		/* Constructor                                 */
 		/*---------------------------------------------*/
 		public function Calendar(self:Calendar)
 		{
 			_twoDigitYearMax = -1;
-			
+
 			// Abstract class implementation
 			AbstractUtil.mustBeAbstract(self, this);
-			/*
-			var mustImplementMethods : Array =
-				[eras,twoDigitYearMax,addMonths,addWeeks,addYears,getDayOfMonth,
-				getDayOfWeek,getDayOfYear,getMonth,getYear,getDaysInMonthInEra,
-				getMonthsInYearInEra,getEra,getMonthsInYearInEra,isLeapDayInEra,
-				isLeapMonthInEra,isLeapYearInEra,toDateTimeInEra,toFourDigitYear];
-			AbstractUtil.checkMustImplementMethods(this, Calendar, mustImplementMethods);*/
+		/*
+		   var mustImplementMethods : Array =
+		   [eras,twoDigitYearMax,addMonths,addWeeks,addYears,getDayOfMonth,
+		   getDayOfWeek,getDayOfYear,getMonth,getYear,getDaysInMonthInEra,
+		   getMonthsInYearInEra,getEra,getMonthsInYearInEra,isLeapDayInEra,
+		   isLeapMonthInEra,isLeapYearInEra,toDateTimeInEra,toFourDigitYear];
+		 AbstractUtil.checkMustImplementMethods(this, Calendar, mustImplementMethods);*/
 		}
 
 		/*---------------------------------------------*/
@@ -56,7 +56,7 @@ package org.lionart.time
 		 * @return : an Array on int
 		 */
 		public function get eras() : Array {return []};
-		
+
 		/**
 		 * Get the last year of a 100-year range for 2-digit processing.
 		 */
@@ -71,7 +71,7 @@ package org.lionart.time
 		{
 			_twoDigitYearMax = value;
 		}
-		
+
 		/**
 		 * Add a time period to a Date value.
 		 */
@@ -86,7 +86,7 @@ package org.lionart.time
 		public function addMilliseconds(time : Date, milliseconds : Number) : Date
 		{
 			var ticks : Number;
-			
+
 			// Get the final date tick value.  We use the
 			// "checked" block to detect overflow when
 			// computing the tick value.
@@ -98,7 +98,7 @@ package org.lionart.time
 			{
 				throw new ArgumentException("","Arg_DateRange");
 			}
-			
+
 			// Construct and return a new Date object,
 			// which will also check for out of range values.
 			return new Date(ticks);
@@ -132,12 +132,12 @@ package org.lionart.time
 			{
 				throw new ArgumentException("","Arg_DateRange");
 			}
-			
+
 			// Construct and return a new Date object,
 			// which will also check for out of range values.
 			return new Date(ticks);
 		}
-		
+
 		/**
 		 * Extract the components from a Date value.
 		 */
@@ -164,7 +164,7 @@ package org.lionart.time
 		{
 			return getDaysInMonthInEra(year, month, CURRENT_ERA);
 		}
-		
+
 		/**
 		 * Get the number of days in a particular year.
 		 */
@@ -172,7 +172,7 @@ package org.lionart.time
 		{
 			return getDaysInYearInEra(year, CURRENT_ERA);
 		}
-		
+
 		/**
 		 * Get the number of months in a specific year.
 		 */
@@ -180,7 +180,7 @@ package org.lionart.time
 		{
 			return getMonthsInYearInEra(year, CURRENT_ERA);
 		}
-		
+
 		/**
 		 * Get the week of the year that a particular date falls within.
 		 */
@@ -193,7 +193,7 @@ package org.lionart.time
 			// Find out when Jan 1 occurs in this year.
 			var jan1 : int;
 			jan1 = getDayOfWeek(toDateTimeInEra(getYear(time), 1, 1, 0, 0, 0, 0, CURRENT_ERA));
-			
+
 			// Compute the week value.
 			var inc  : int;
 			var temp : int;
@@ -207,12 +207,12 @@ package org.lionart.time
 					{
 						inc += 7;
 					}
-					
+
 					// Compute the week value.
 					return ((getDayOfYear(time) + inc) / 7) + 1;
 				}
-					// Not reached.
-					
+				// Not reached.
+
 				case CalendarWeekRule.FIRST_FULL_WEEK:
 				case CalendarWeekRule.FIRST_FOUR_DAY_WEEK:
 				{
@@ -240,30 +240,30 @@ package org.lionart.time
 							}
 						}
 					}
-					
+
 					// Compute the week value.
 					temp = getDayOfYear(time) - inc;
 					if(temp > 0)
 					{
 						return ((temp - 1) / 7) + 1;
 					}
-					
+
 					// The week is actually the last week of the
 					// previous year, so restart the process.
 					temp = getYear(time) - 1;
 					inc = getMonthsInYear(temp);
 					return getWeekOfYear(toDateTimeInEra(temp, inc, getDaysInMonth(temp, inc),0, 0, 0, 0, CURRENT_ERA),rule, firstDayOfWeek);
 				}
-					// Not reached.
-					
+				// Not reached.
+
 				default:
 				{
 					throw new ArgumentOutOfRangeException("rule", "Arg_CalendarWeekRule");
 				}
-					// Not reached.
+				// Not reached.
 			}
 		}
-		
+
 		/**
 		 * Determine if a particular day is a leap day.
 		 */
@@ -271,7 +271,7 @@ package org.lionart.time
 		{
 			return isLeapDayInEra(year, month, day, CURRENT_ERA);
 		}
-		
+
 		/**
 		 * Determine if a particular month is a leap month.
 		 */
@@ -279,25 +279,25 @@ package org.lionart.time
 		{
 			return isLeapMonthInEra(year, month, CURRENT_ERA);
 		}
-		/** 
+		/**
 		 * Determine if a particular year is a leap year.
 		 */
 		public function isLeapYear(year : int) : Boolean
 		{
 			return isLeapYearInEra(year, CURRENT_ERA);
 		}
-		
+
 		/**
 		 * Convert a particular time into a DateTime value.
 		 */
 		public function toDateTime( year : int, month : int, day : int,
-									hour : int, minute : int, second : int,
-									millisecond : int) : Date
+			hour : int, minute : int, second : int,
+			millisecond : int) : Date
 		{
 			return toDateTimeInEra(year, month, day, hour, minute, second,
 				millisecond, CURRENT_ERA);
 		}
-		
+
 		/**
 		 * Convert a two-digit year value into a four-digit year value.
 		 */
@@ -335,38 +335,38 @@ package org.lionart.time
 		// Add a time period to a Date value.
 		public function addMonths(time : Date, months : int) : Date {return null};
 		public function addYears(time : Date, years : int) : Date {return null};
-		
+
 		// Extract the components from a Date value.
 		public function getDayOfMonth(time : Date) : int {return NaN};
 		public function getDayOfWeek(time : Date) : int {return NaN};
 		public function getDayOfYear(time : Date) : int {return NaN};
 		public function getMonth(time : Date) : int {return NaN};
 		public function getYear(time : Date) : int {return NaN};
-		
+
 		// Get the number of days in a particular month.
 		public function getDaysInMonthInEra(year : int, month : int,era : int) : int {return NaN};
-		
+
 		// Get the number of days in a particular year.
 		public function getDaysInYearInEra(year : int, era : int) : int {return NaN};
-		
+
 		// Get the era for a specific DateTime value.
 		public function getEra(time : Date) : int {return NaN};
-		
+
 		// Get the number of months in a specific year.
 		public function getMonthsInYearInEra(year : int, era : int) : int {return NaN};
-		
+
 		// Determine if a particular day is a leap day.
 		public function isLeapDayInEra(year : int, month : int, day : int, era : int) : Boolean {return false};
-		
+
 		// Determine if a particular month is a leap month.
 		public function isLeapMonthInEra(year : int, month : int, era : int) : Boolean {return false};
-		
+
 		// Determine if a particular year is a leap year.
 		public function isLeapYearInEra(year : int, era : int) : Boolean {return false};
-		
+
 		//
 		public function toDateTimeInEra(year : int, month : int, day : int,
-										hour : int, minute : int, second : int,
-										millisecond : int, era : int) : Date {return null};
+			hour : int, minute : int, second : int,
+			millisecond : int, era : int) : Date {return null};
 	}
 }

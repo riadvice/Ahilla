@@ -1,7 +1,7 @@
-package org.lionart.arabic.Calendar
+package org.lionart.arabic.calendar
 {
 	import org.lionart.time.Calendar;
-	
+
 	/**
 	 * @author : LionArt
 	 */
@@ -17,7 +17,7 @@ package org.lionart.arabic.Calendar
 		{
 			return 1;
 		}
-		
+
 		/**
 		 * Internal state.
 		 */
@@ -39,11 +39,11 @@ package org.lionart.arabic.Calendar
 			hijri = new HijriCalendar();
 			hirji.hijriAdjustment = 0;
 		}
-		
+
 		/*---------------------------------------------*/
 		/* Methods                                     */
 		/*---------------------------------------------*/
-		
+
 		/*---------------------------------------------*/
 		/* Abstract Methods Implementation             */
 		/*---------------------------------------------*/
@@ -55,7 +55,7 @@ package org.lionart.arabic.Calendar
 			var eras : Array = new Array(umAlQuraEra);
 			return eras;
 		}
-		
+
 		/**
 		 * Set the last year of a 100-year range for 2-digit processing.
 		 */
@@ -67,7 +67,7 @@ package org.lionart.arabic.Calendar
 		{
 			hirji.twoDigitYearMax = value;
 		}
-		
+
 		/**
 		 * Add a time period to a DateTime value.
 		 */
@@ -79,7 +79,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hirji.addYears(time, years);
 		}
-		
+
 		/**
 		 * Extract the components from a DateTime value.
 		 */
@@ -103,7 +103,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hirji.getYear(time);
 		}
-			
+
 		/**
 		 * Get the number of days in a particular month.
 		 */
@@ -111,7 +111,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hirji.getDaysInMonthInEra(year, month, era);
 		}
-		
+
 		/**
 		 * Get the number of days in a particular year.
 		 */
@@ -119,7 +119,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hirji.getDaysInYearInEra(year, era);
 		}
-		
+
 		/**
 		 * Get the era for a specific DateTime value.
 		 */
@@ -127,7 +127,7 @@ package org.lionart.arabic.Calendar
 		{
 			return umAlQuraEra;
 		}
-		
+
 		/**
 		 * Get the number of months in a specific year.
 		 */
@@ -135,7 +135,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hirji.getMonthsInYearInEra(year, era);
 		}
-		
+
 		/**
 		 * Determine if a particular day is a leap day.
 		 */
@@ -143,7 +143,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hirji.isLeapDayInEra(year, month, day, era);
 		}
-		
+
 		/**
 		 * Determine if a particular month is a leap month.
 		 */
@@ -151,7 +151,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hirji.isLeapMonthInEra(year, month, era);
 		}
-		
+
 		/**
 		 * Determine if a particular year is a leap year.
 		 */
@@ -159,7 +159,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hirji.isLeapYearInEra(year, era);
 		}
-		
+
 		/**
 		 * Convert a particular time into a DateTime value.
 		 */
@@ -167,7 +167,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hirji.toDateTimeInEra(year, month, day, hour, minute, second, millisecond, era);
 		}
-		
+
 		/**
 		 * Convert a two-digit year value into a four-digit year value.
 		 */
@@ -177,3 +177,5 @@ package org.lionart.arabic.Calendar
 		}
 	}
 }
+
+

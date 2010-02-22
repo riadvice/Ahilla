@@ -13,19 +13,19 @@ package org.lionart
 		public function equals( obj : FlexObject ) : Boolean
 		{
 			return ( this == obj );
-			
+
 		}
-		
+
 		/**
 		 * Creates and returns a copy of this object.
 		 */
 		public function clone() : FlexObject
 		{
 			var classRef : Class = this["constructor"];
-			
+
 			var newObj : FlexObject = new classRef();
 			return newObj;
 		}
-		
+
 	}
 }

@@ -3,7 +3,7 @@ package org.lionart.time
 	/**
 	 * @author : LionArt
 	 */
-	
+
 	public class GregorianCalendarTypes
 	{
 		public static const LOCALIZED    : int	         = 1;

@@ -7,14 +7,16 @@ package org.lionart.time
 		public static const MILLISECONDS_PER_MINUTE : Number = 1000 * 60;
 		public static const MILLISECONDS_PER_HOUR 	: Number = 1000 * 60 * 60;
 		public static const MILLISECONDS_PER_DAY 	: Number = 1000 * 60 * 60 * 24;
-		
+
 		public static const SECONDS_PER_MINUTE	: int	= 60;
 		public static const SECONDS_PER_HOUR	: Number	= 60 * 60;
 		public static const SECONDS_PER_DAY		: Number	= 60 * 60 * 24;
-			
+
 		public static const MINUTES_PER_HOUR	: int	= 60;
 		public static const MIUTES_PER_DAY		: Number	= 60 * 24;
-			
+
 		public static const HOURS_PER_DAY		: int	= 24;
 	}
 }
+
+

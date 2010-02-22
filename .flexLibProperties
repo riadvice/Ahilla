@@ -20,7 +20,6 @@
     <classEntry path="org.lionart.utils.dateutils.DateTimeUtils"/>
     <classEntry path="org.lionart.utils.dateutils.DaylightSavingTimeUS"/>
   </includeClasses>
-  <includeResources>
-  </includeResources>
+  <includeResources/>
   <namespaceManifests/>
 </flexLibProperties>

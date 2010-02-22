@@ -7,7 +7,7 @@ package org.lionart.time
 	/**
 	 * @author : LionArt
 	 */
-	
+
 	public class GregorianCalendar extends Calendar
 	{
 		/*---------------------------------------------*/
@@ -17,17 +17,17 @@ package org.lionart.time
 		 * The A.D. era.
 		 */
 		public const ADEra : int = 1;
-		
+
 		/**
 		 * Internal state is a GregorianCalendarTypes.
 		 */
 		private var _calendarType : int;
-		
+
 		/**
 		 * Useful constants.
 		 */
 		private const DEFAULT_TWO_DIGIT_MAX : int = 2029;
-		
+
 		/*---------------------------------------------*/
 		/* Constructor                                 */
 		/*---------------------------------------------*/
@@ -39,7 +39,7 @@ package org.lionart.time
 			super(this);
 			calendarType = gregorianCalendarType;
 		}
-		
+
 		/*---------------------------------------------*/
 		/* Methods                                     */
 		/*---------------------------------------------*/
@@ -47,12 +47,12 @@ package org.lionart.time
 		{
 			return _calendarType;
 		}
-		
+
 		public function set calendarType(value:int) : void
 		{
 			_calendarType = value;
 		}
-		
+
 		/*---------------------------------------------*/
 		/* Abstract Methods Implementation             */
 		/*---------------------------------------------*/
@@ -64,7 +64,7 @@ package org.lionart.time
 			var erasArray : Array = new Array(ADEra);
 			return erasArray;
 		}
-		
+
 		/**
 		 * Set the last year of a 100-year range for 2-digit processing.
 		 */
@@ -90,7 +90,7 @@ package org.lionart.time
 			}
 			super.twoDigitYearMax = value;
 		}
-		
+
 		/**
 		 * Add a time period to a DateTime value.
 		 */
@@ -108,7 +108,7 @@ package org.lionart.time
 			time.fullYear += years;
 			return time;
 		}
-		
+
 		/**
 		 * Extract the components from a DateTime value.
 		 */
@@ -132,7 +132,7 @@ package org.lionart.time
 		{
 			return time.fullYear;
 		}
-		
+
 		/**
 		 * Get the number of days in a particular month.
 		 */
@@ -144,7 +144,7 @@ package org.lionart.time
 			}
 			return DateTimeUtils.daysInMonth(new Date(year,month));
 		}
-		
+
 		/**
 		 * Get the number of days in a particular year.
 		 */
@@ -167,7 +167,7 @@ package org.lionart.time
 				return 365;
 			}
 		}
-		
+
 		/**
 		 * Get the era for a specific DateTime value.
 		 */
@@ -175,7 +175,7 @@ package org.lionart.time
 		{
 			return ADEra;
 		}
-		
+
 		/**
 		 * Get the number of months in a specific year.
 		 */
@@ -218,7 +218,7 @@ package org.lionart.time
 				return false;
 			}
 		}
-		
+
 		/**
 		 * Determine if a particular month is a leap month.
 		 */
@@ -230,7 +230,7 @@ package org.lionart.time
 			}
 			return (isLeapYearInEra(year, era) && month == 2);
 		}
-		
+
 		/**
 		 * Determine if a particular year is a leap year.
 		 */
@@ -246,7 +246,7 @@ package org.lionart.time
 			}
 			return DateTimeUtils.isLeapYear(new Date(year));
 		}
-		
+
 		/**
 		 * Convert a particular time into a DateTime value.
 		 */
@@ -258,7 +258,7 @@ package org.lionart.time
 			}
 			return new Date(year, month, day, hour,	minute, second, millisecond);
 		}
-		
+
 		/**
 		 * Convert a two-digit year value into a four-digit year value.
 		 */

@@ -1,4 +1,4 @@
-package org.lionart.arabic.Calendar
+package org.lionart.arabic.calendar
 {
 	import org.lionart.exceptions.ArgumentException;
 	import org.lionart.exceptions.ArgumentOutOfRangeException;
@@ -21,23 +21,23 @@ package org.lionart.arabic.Calendar
 		{
 			return 1;
 		}
-		
+
 		/**
 		 * Useful constants.
 		 */
 		private const DEFAULT_TWO_DIGIT_MAX : int = 1451;
 		private const MAX_YEAR : int = 9666;
-		/* 
-			622,6,15 = -42521940000000 
-		    622,6,8  = -42522544800000 Maybe 622,7,8 (7 = July) is correct
-		*/
+		/*
+		   622,6,15 = -42521940000000
+		   622,6,8  = -42522544800000 Maybe 622,7,8 (7 = July) is correct
+		 */
 		private const MIN_TIME : Number = -42522544800000;
-		
+
 		/**
 		 * Internal state.
 		 */
 		private var adjustemnt : int;
-		
+
 		/**
 		 * Number of days in each month of the year.  The last month will
 		 * have 30 days in a leap year.
@@ -47,7 +47,7 @@ package org.lionart.arabic.Calendar
 		{
 			return [30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29];
 		}
-		
+
 		/**
 		 * Number of days before each month.
 		 */
@@ -55,27 +55,27 @@ package org.lionart.arabic.Calendar
 		public function get daysBeforeMonth () : Array
 		{
 			return [0,
-				    30,
-				    30 + 29,
-					30 + 29 + 30,
-					30 + 29 + 30 + 29,
-					30 + 29 + 30 + 29 + 30,
-					30 + 29 + 30 + 29 + 30 + 29,
-					30 + 29 + 30 + 29 + 30 + 29 + 30,
-					30 + 29 + 30 + 29 + 30 + 29 + 30 + 29,
-					30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30,
-					30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29,
-					30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30];
+				30,
+				30 + 29,
+				30 + 29 + 30,
+				30 + 29 + 30 + 29,
+				30 + 29 + 30 + 29 + 30,
+				30 + 29 + 30 + 29 + 30 + 29,
+				30 + 29 + 30 + 29 + 30 + 29 + 30,
+				30 + 29 + 30 + 29 + 30 + 29 + 30 + 29,
+				30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30,
+				30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29,
+				30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30];
 		}
 		/**
 		 * Variables used in pullDateApart because flex do not work
-		 * with reference with native types. 
+		 * with reference with native types.
 		 */
 		private var _yearRef  : int;
 		private var _monthRef : int;
 		private var _dayRef   : int;
 		private var _ticksBeforeUTC : Number= 62135596800000;
-		
+
 		/*---------------------------------------------*/
 		/* Constuctor                                  */
 		/*---------------------------------------------*/
@@ -84,7 +84,7 @@ package org.lionart.arabic.Calendar
 			super(this);
 			adjustemnt = 0x0100;
 		}
-		
+
 		/*---------------------------------------------*/
 		/* Methods                                     */
 		/*---------------------------------------------*/
@@ -114,7 +114,7 @@ package org.lionart.arabic.Calendar
 			}
 			adjustemnt = value;
 		}
-		
+
 		/**
 		 * Convert a year value into an absolute number of days.
 		 */
@@ -130,7 +130,7 @@ package org.lionart.arabic.Calendar
 			}
 			return days;
 		}
-		
+
 		/**
 		 * Pull apart a DateTime value into year, month, and day.
 		 */
@@ -139,22 +139,22 @@ package org.lionart.arabic.Calendar
 			var days : int;
 			var estimate1 : int;
 			var estimate2 : int;
-			
+
 			//init variables
 			_yearRef = 0;
 			_monthRef = 0;
 			_dayRef = 0;
-			
+
 			// Validate the time range.
 			if(time.time < MIN_TIME)
 			{
 				throw new ArgumentOutOfRangeException("time","ArgRange_HijriDate");
 			}
-			
+
 			// Calculate the absolute date, adjusted as necessary.
 			days = ((time.time + _ticksBeforeUTC) / TimeSpan.MILLISECONDS_PER_DAY) + 1;
 			days += hijriAdjustment;
-			
+
 			// Calculate the Hijri year value.
 			_yearRef = (((days - 227013) * 30) / 10631) + 1;
 			estimate1 = yearToDay(_yearRef);
@@ -175,7 +175,7 @@ package org.lionart.arabic.Calendar
 				estimate1 += estimate2;
 				++_yearRef;
 			}
-			
+
 			// Calculate the Hijri month value.
 			_monthRef = 1;
 			days -= estimate1;
@@ -184,11 +184,11 @@ package org.lionart.arabic.Calendar
 				++_monthRef;
 			}
 			--_monthRef;
-			
+
 			// Calculate the Hijri date value.
 			_dayRef = (days - daysBeforeMonth[_monthRef - 1]);
 		}
-		
+
 		private function recombineDate(year : int, month : int, day : int, ticks : int) : Date
 		{
 			var limit : int = getDaysInMonthInEra(year, month, hijriEra);
@@ -205,7 +205,7 @@ package org.lionart.arabic.Calendar
 			}
 			return new Date(days * TimeSpan.MILLISECONDS_PER_DAY + ticks);
 		}
-		
+
 		/*---------------------------------------------*/
 		/* Abstract Methods Implementation             */
 		/*---------------------------------------------*/
@@ -217,7 +217,7 @@ package org.lionart.arabic.Calendar
 			var erasArray : Array = new Array(hijriEra);
 			return erasArray;
 		}
-		
+
 		/**
 		 * Set the last year of a 100-year range for 2-digit processing.
 		 */
@@ -243,7 +243,7 @@ package org.lionart.arabic.Calendar
 			}
 			super.twoDigitYearMax = value;
 		}
-		
+
 		/**
 		 * Add a time period to a DateTime value.
 		 */
@@ -282,7 +282,7 @@ package org.lionart.arabic.Calendar
 		{
 			return addMonths(time, years * 12);
 		}
-		
+
 		/**
 		 * Extract the components from a DateTime value.
 		 */
@@ -295,7 +295,7 @@ package org.lionart.arabic.Calendar
 		{
 			return DateTimeUtils.dayOfWeek( time );
 		}
-    	override public function getDayOfYear(time : Date) : int
+		override public function getDayOfYear(time : Date) : int
 		{
 			pullDateApart(time);
 			return daysBeforeMonth[_monthRef - 1] + _dayRef;
@@ -310,7 +310,7 @@ package org.lionart.arabic.Calendar
 			pullDateApart(time);
 			return _yearRef;
 		}
-		
+
 		/**
 		 * Get the number of days in a particular month.
 		 */
@@ -341,7 +341,7 @@ package org.lionart.arabic.Calendar
 				return 29;
 			}
 		}
-		
+
 		/**
 		 * Get the number of days in a particular year.
 		 */
@@ -356,7 +356,7 @@ package org.lionart.arabic.Calendar
 				return 354;
 			}
 		}
-		
+
 		/**
 		 * Get the era for a specific DateTime value.
 		 */
@@ -364,7 +364,7 @@ package org.lionart.arabic.Calendar
 		{
 			return hijriEra;
 		}
-		
+
 		// Get the number of months in a specific year.
 		override public function getMonthsInYearInEra(year : int, era : int) : int
 		{
@@ -378,7 +378,7 @@ package org.lionart.arabic.Calendar
 			}
 			return 12;
 		}
-		
+
 		/**
 		 * Determine if a particular day is a leap day.
 		 */
@@ -397,7 +397,7 @@ package org.lionart.arabic.Calendar
 				return false;
 			}
 		}
-		
+
 		/**
 		 * Determine if a particular month is a leap month.
 		 */
@@ -416,7 +416,7 @@ package org.lionart.arabic.Calendar
 				return false;
 			}
 		}
-		
+
 		/**
 		 * Determine if a particular year is a leap year.
 		 */
@@ -439,21 +439,21 @@ package org.lionart.arabic.Calendar
 				return false;
 			}
 		}
-		
+
 		/**
 		 * Convert a particular time into a Date value.
 		 */
 		override public function toDateTimeInEra(year : int, month : int, day : int,
 			hour : int, minute : int, second : int,
 			millisecond : int, era : int) : Date
+		{
+			if(era != CURRENT_ERA && era != hijriEra)
 			{
-				if(era != CURRENT_ERA && era != hijriEra)
-				{
-					throw new ArgumentException("","Arg_InvalidEra");
-				}
+				throw new ArgumentException("","Arg_InvalidEra");
+			}
 			return recombineDate(year, month, day,(new Date(1970,0,1,hour, minute, second, millisecond)).time);
 		}
-		
+
 		/**
 		 * Convert a two-digit year value into a four-digit year value.
 		 */
@@ -467,3 +467,5 @@ package org.lionart.arabic.Calendar
 		}
 	}
 }
+
+
