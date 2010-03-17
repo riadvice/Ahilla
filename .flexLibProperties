@@ -19,6 +19,7 @@
     <classEntry path="org.lionart.utils.dateutils.BusinessDay"/>
     <classEntry path="org.lionart.utils.dateutils.DateTimeUtils"/>
     <classEntry path="org.lionart.utils.dateutils.DaylightSavingTimeUS"/>
+    <classEntry path="org.lionart.utils.SearchUtils"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

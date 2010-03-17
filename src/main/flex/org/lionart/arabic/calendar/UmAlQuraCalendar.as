@@ -1,3 +1,4 @@
+/* Copyright Ghazi Triki (LionArt) 2010 */
 package org.lionart.arabic.calendar
 {
 	import org.lionart.time.Calendar;
