@@ -14,7 +14,6 @@ package org.lionart
 		public function equals( obj : FlexObject ) : Boolean
 		{
 			return ( this == obj );
-
 		}
 
 		/**

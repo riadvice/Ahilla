@@ -4,6 +4,9 @@
     <classEntry path="org.lionart.FlexObject"/>
     <classEntry path="org.lionart.arabic.calendar.HijriCalendar"/>
     <classEntry path="org.lionart.arabic.calendar.UmAlQuraCalendar"/>
+    <classEntry path="org.lionart.components.IslamicCalendarLayout"/>
+    <classEntry path="org.lionart.components.IslamicDateChooser"/>
+    <classEntry path="org.lionart.events.IslamicCalendarLayoutChangeEvent"/>
     <classEntry path="org.lionart.exceptions.ArgumentException"/>
     <classEntry path="org.lionart.exceptions.ArgumentOutOfRangeException"/>
     <classEntry path="org.lionart.exceptions.CharsetException"/>
@@ -19,13 +22,10 @@
     <classEntry path="org.lionart.utils.AbstractUtil"/>
     <classEntry path="org.lionart.utils.SearchUtils"/>
     <classEntry path="org.lionart.utils.common.HexaUtils"/>
+    <classEntry path="org.lionart.utils.common.StringUtils"/>
     <classEntry path="org.lionart.utils.dateutils.BusinessDay"/>
     <classEntry path="org.lionart.utils.dateutils.DateTimeUtils"/>
     <classEntry path="org.lionart.utils.dateutils.DaylightSavingTimeUS"/>
-    <classEntry path="org.lionart.utils.encoding.CharsetConverter"/>
-    <classEntry path="org.lionart.utils.encoding.Charsets"/>
-    <classEntry path="org.lionart.utils.encoding.ConvertTables"/>
-    <classEntry path="org.lionart.utils.common.StringUtils"/>
   </includeClasses>
   <includeResources>
     <resourceEntry destPath="resources/converttables/windows-1256" sourcePath="resources/converttables/windows-1256"/>
