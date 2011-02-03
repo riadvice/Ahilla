@@ -59,10 +59,18 @@ package org.lionart.arabic.calendar
 
         public function get daysBeforeMonth() : Array
         {
-            return [0, 30, 30 + 29, 30 + 29 + 30, 30 + 29 + 30 + 29, 30 + 29 + 30 + 29 + 30, 30 + 29 + 30 + 29 + 30 + 29,
-                30 + 29 + 30 + 29 + 30 + 29 + 30, 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29, 30 + 29 + 30 + 29 + 30 + 29 + 30 +
-                29 + 30, 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29, 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 +
-                30];
+            return [0,
+                30, 
+                30 + 29,
+                30 + 29 + 30,
+                30 + 29 + 30 + 29,
+                30 + 29 + 30 + 29 + 30,
+                30 + 29 + 30 + 29 + 30 + 29,
+                30 + 29 + 30 + 29 + 30 + 29 + 30,
+                30 + 29 + 30 + 29 + 30 + 29 + 30 + 29,
+                30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30,
+                30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29,
+                30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30 + 29 + 30];
         }
 
         /**
@@ -126,7 +134,7 @@ package org.lionart.arabic.calendar
             approximationSign = month <= getMonth() ? -1 : 1;
             while ( month != getMonth())
             {
-                _internalDate.date += 15 * approximationSign;
+                _internalDate.date += 7 * approximationSign;
             }
             approximationSign = days <= getDayOfMonth() ? -1 : 1;
             while ( days != getDayOfMonth())
@@ -363,7 +371,7 @@ package org.lionart.arabic.calendar
         override public function getMonth( time : Date = null ) : int
         {
             pullDateApart( time );
-            return _monthRef;
+            return _monthRef - 1;
         }
 
         override public function getYear( time : Date = null ) : int
@@ -385,13 +393,13 @@ package org.lionart.arabic.calendar
             {
                 throw new ArgumentOutOfRangeException( "year", "ArgRange_Year" );
             }
-            if ( month < 1 || month > 12 )
+            if ( month < 0 || month > 11 )
             {
                 throw new ArgumentOutOfRangeException( "month", "ArgRange_Month" );
             }
-            if ( month < 12 )
+            if ( month < 11 )
             {
-                return daysInMonth[month - 1];
+                return daysInMonth[month];
             }
             else if ( isLeapYearInEra( year, era ))
             {
@@ -464,13 +472,13 @@ package org.lionart.arabic.calendar
          */
         override public function isLeapMonthInEra( year : int, month : int, era : int ) : Boolean
         {
-            if ( month < 1 || month > 12 )
+            if ( month < 0 || month > 11 )
             {
                 throw new ArgumentOutOfRangeException( "month", "ArgRange_Month" );
             }
             if ( isLeapYearInEra( year, era ))
             {
-                return ( month == 12 );
+                return ( month == 11 );
             }
             else
             {
