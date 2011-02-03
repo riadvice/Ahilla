@@ -632,6 +632,7 @@ package org.lionart.components
 
     [ResourceBundle( "controls" )]
     [ResourceBundle( "SharedResources" )]
+    [ResourceBundle( "islamic" )]
 
     /**
      *  The DateChooser control displays the name of a month, the year,
@@ -1668,7 +1669,7 @@ package org.lionart.components
         {
             monthNamesOverride = value;
 
-            _monthNames = value != null ? value : resourceManager.getStringArray( "SharedResources", "monthNames" );
+            _monthNames = value != null ? value : resourceManager.getStringArray( "islamic", "monthNames" );
 
             // _monthNames will be null if there are no resources.
             _monthNames = _monthNames ? monthNames.slice( 0 ) : null;

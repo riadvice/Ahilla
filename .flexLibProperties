@@ -28,7 +28,8 @@
     <classEntry path="org.lionart.utils.dateutils.DaylightSavingTimeUS"/>
   </includeClasses>
   <includeResources>
-    <resourceEntry destPath="resources/converttables/windows-1256" sourcePath="resources/converttables/windows-1256"/>
+    <resourceEntry destPath="defaults.css" sourcePath="defaults.css"/>
+    <resourceEntry destPath="locale/fr_FR/islamic.properties" sourcePath="locale/fr_FR/islamic.properties"/>
   </includeResources>
   <namespaceManifests/>
 </flexLibProperties>

@@ -141,6 +141,7 @@ package org.lionart.components
 
     [ExcludeClass]
     [ResourceBundle( "controls" )]
+    [ResourceBundle( "islamic" )]
 
     /**
      *  @private
