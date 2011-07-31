@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<componentPackage>
-    <component id="IslamicCalendarLayout" class="org.lionart.components.IslamicCalendarLayout"/>
-    <component id="IslamicDateChooser" class="org.lionart.components.IslamicDateChooser"/>
-</componentPackage>
