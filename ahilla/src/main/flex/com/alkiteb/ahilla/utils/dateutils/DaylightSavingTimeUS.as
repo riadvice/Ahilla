@@ -1,5 +1,5 @@
 /* Copyright Ghazi Triki (LionArt) 2010 */
-package com.alkiteb.utils.dateutils
+package com.alkiteb.ahilla.utils.dateutils
 {
 	import mx.utils.ObjectUtil;
 	

@@ -1,9 +1,9 @@
 /* Copyright Ghazi Triki (LionArt) 2010 */
-package com.alkiteb.time
+package com.alkiteb.ahilla.time
 {
-    import com.alkiteb.exceptions.ArgumentException;
-    import com.alkiteb.exceptions.ArgumentOutOfRangeException;
-    import com.alkiteb.utils.dateutils.DateTimeUtils;
+    import com.alkiteb.ahilla.exceptions.ArgumentException;
+    import com.alkiteb.ahilla.exceptions.ArgumentOutOfRangeException;
+    import com.alkiteb.ahilla.utils.dateutils.DateTimeUtils;
 
     /**
      * @author : LionArt

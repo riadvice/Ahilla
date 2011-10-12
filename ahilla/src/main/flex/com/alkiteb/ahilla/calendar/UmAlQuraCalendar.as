@@ -1,7 +1,7 @@
 /* Copyright Ghazi Triki (LionArt) 2010 */
-package com.alkiteb.arabic.calendar
+package com.alkiteb.ahilla.calendar
 {
-    import com.alkiteb.time.Calendar;
+    import com.alkiteb.ahilla.time.Calendar;
 
     /**
      * @author : LionArt

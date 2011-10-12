@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-    <name>Arabic Flex</name>
+    <name>ahilla</name>
     <comment></comment>
     <projects>
     </projects>
@@ -10,9 +10,9 @@
             <arguments>
             </arguments>
         </buildCommand>
-            </buildSpec>
+    </buildSpec>
     <natures>
-                        <nature>com.adobe.flexbuilder.project.flexlibnature</nature>
-                <nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
+        <nature>com.adobe.flexbuilder.project.flexlibnature</nature>
+        <nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
     </natures>
-    </projectDescription>
+</projectDescription>

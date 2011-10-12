@@ -1,5 +1,5 @@
 /* Copyright Ghazi Triki (LionArt) 2010 */
-package com.alkiteb.utils
+package com.alkiteb.ahilla.utils
 {
 	import flash.errors.IllegalOperationError;
 	import flash.utils.describeType;

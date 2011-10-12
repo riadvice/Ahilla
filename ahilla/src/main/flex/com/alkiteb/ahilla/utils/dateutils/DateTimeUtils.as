@@ -29,7 +29,7 @@
  * 2009-08-20   Gareth Arch             Looked into modifying weekOfYear to match standard http://en.wikipedia.org/wiki/ISO_week_date
  */
 
-package com.alkiteb.utils.dateutils
+package com.alkiteb.ahilla.utils.dateutils
 {
 	
 	import mx.formatters.DateFormatter;

@@ -1,5 +1,5 @@
 /* Copyright Ghazi Triki (LionArt) 2010 */
-package com.alkiteb.exceptions
+package com.alkiteb.ahilla.exceptions
 {
 
     /**

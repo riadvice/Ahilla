@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="false" useMultiPlatformConfig="false" version="3">
   <includeClasses>
-    <classEntry path="com.alkiteb.arabic.calendar.HijriCalendar"/>
-    <classEntry path="com.alkiteb.arabic.calendar.UmAlQuraCalendar"/>
-    <classEntry path="com.alkiteb.exceptions.ArgumentException"/>
-    <classEntry path="com.alkiteb.exceptions.ArgumentOutOfRangeException"/>
-    <classEntry path="com.alkiteb.exceptions.Exception"/>
-    <classEntry path="com.alkiteb.exceptions.OverflowException"/>
-    <classEntry path="com.alkiteb.time.Calendar"/>
-    <classEntry path="com.alkiteb.time.CalendarWeekRule"/>
-    <classEntry path="com.alkiteb.time.DayOfWeek"/>
-    <classEntry path="com.alkiteb.time.GregorianCalendar"/>
-    <classEntry path="com.alkiteb.time.GregorianCalendarTypes"/>
-    <classEntry path="com.alkiteb.time.ICalendar"/>
-    <classEntry path="com.alkiteb.time.TimeSpan"/>
-    <classEntry path="com.alkiteb.utils.AbstractUtil"/>
-    <classEntry path="com.alkiteb.utils.dateutils.BusinessDay"/>
-    <classEntry path="com.alkiteb.utils.dateutils.DateTimeUtils"/>
-    <classEntry path="com.alkiteb.utils.dateutils.DaylightSavingTimeUS"/>
+    <classEntry path="com.alkiteb.ahilla.calendar.HijriCalendar"/>
+    <classEntry path="com.alkiteb.ahilla.calendar.UmAlQuraCalendar"/>
+    <classEntry path="com.alkiteb.ahilla.exceptions.ArgumentException"/>
+    <classEntry path="com.alkiteb.ahilla.exceptions.ArgumentOutOfRangeException"/>
+    <classEntry path="com.alkiteb.ahilla.exceptions.Exception"/>
+    <classEntry path="com.alkiteb.ahilla.exceptions.OverflowException"/>
+    <classEntry path="com.alkiteb.ahilla.time.Calendar"/>
+    <classEntry path="com.alkiteb.ahilla.time.CalendarWeekRule"/>
+    <classEntry path="com.alkiteb.ahilla.time.DayOfWeek"/>
+    <classEntry path="com.alkiteb.ahilla.time.GregorianCalendar"/>
+    <classEntry path="com.alkiteb.ahilla.time.GregorianCalendarTypes"/>
+    <classEntry path="com.alkiteb.ahilla.time.ICalendar"/>
+    <classEntry path="com.alkiteb.ahilla.time.TimeSpan"/>
+    <classEntry path="com.alkiteb.ahilla.utils.AbstractUtil"/>
+    <classEntry path="com.alkiteb.ahilla.utils.dateutils.BusinessDay"/>
+    <classEntry path="com.alkiteb.ahilla.utils.dateutils.DateTimeUtils"/>
+    <classEntry path="com.alkiteb.ahilla.utils.dateutils.DaylightSavingTimeUS"/>
   </includeClasses>
   <includeResources>
     <resourceEntry destPath="locale/en_US/islamic.properties" sourcePath="locale/en_US/islamic.properties"/>

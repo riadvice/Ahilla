@@ -25,7 +25,7 @@
  * based upon business days.
  */
 
-package com.alkiteb.utils.dateutils
+package com.alkiteb.ahilla.utils.dateutils
 {
 	
 	public class BusinessDay {
