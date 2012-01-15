@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Ce fichier est généré automatiquement et n'est pas destiné à être modifié. -->
+<!-- This is an auto generated file and is not intended for modification. -->
 
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
                        xmlns:s="library://ns.adobe.com/flex/spark"
                        xmlns:mx="library://ns.adobe.com/flex/mx"
                        xmlns:flexui="flexunit.flexui.*"
-                       creationComplete="onCreationComplete()">
+                       creationComplete="onCreationComplete()" showStatusBar="false">
     <fx:Script>
         <![CDATA[
-            import com.alkiteb.ahilla.calendar.HijriCalendarTest;
             import com.alkiteb.ahilla.testsuite.AhillaTestSuite;
             
             public function currentRunTestSuite():Array
             {
                 var testsToRun:Array = new Array();
                 testsToRun.push(com.alkiteb.ahilla.testsuite.AhillaTestSuite);
-                testsToRun.push(com.alkiteb.ahilla.calendar.HijriCalendarTest);
                 return testsToRun;
             }
             
@@ -29,8 +27,8 @@
         ]]>
     </fx:Script>
     <fx:Declarations>
-        <!-- Placer ici les éléments non visuels (services et objets de valeur, par exemple). -->
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
     </fx:Declarations>
-    <flexui:FlexUnitTestRunnerUI id="testRunner">
+    <flexui:FlexUnitTestRunnerUI id="testRunner" portNumber="8765">
     </flexui:FlexUnitTestRunnerUI>
 </s:WindowedApplication>
