@@ -1,2 +1,0 @@
-Add to eclipse
--locale en_US allow-source-path-overlap=true -source-path=locale/{locale}
